@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProfilePage from "./ProfilePage"
+import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
     state = {
@@ -55,9 +55,15 @@ export default class Home extends Component {
     generateListItemsMap = (users) => {
         const userNames = []
         for (const user in users) {
-            const {data} = users[user]
+            const {data, posts} = users[user]
             userNames.push(
-                <li key={data.id} data-id={user} onClick={(e) => this.selectUserHandler(e)}>{data.name}</li>
+                <Link key={data.id} to={{
+                    pathname: `/users/${data.id}`,
+                    state: {
+                        data: data,
+                        posts: posts
+                    }
+                }}>{data.name}</Link>
             )
         }
 
@@ -76,7 +82,7 @@ export default class Home extends Component {
         return (
             <div id="homepage">
                 <h1>Brian DiRito Bennie Take Home</h1>
-                {!this.state.selectedUser.data ? <ul>{this.generateListItemsMap(this.state.allUsers)}</ul> : <ProfilePage user={this.state.selectedUser}/>}
+                <ul>{this.generateListItemsMap(this.state.allUsers)}</ul>
             </div>
         )
     }
