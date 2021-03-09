@@ -3,17 +3,34 @@ import {Link} from 'react-router-dom'
 
 export default class ProfilePage extends Component {
     state = {
-        data: {},
-        posts: []
+        data: this.props.location.state.data,
+        posts: this.props.location.state.posts
     }
 
-    componentDidMount = () => {
-        const {data, posts} = this.props.location.state
-        this.setState({ 
-            ...this.state,
-            data,
-            posts
+    renderPosts = (posts) => {
+        return posts.map((post) => {
+            return <li key={post.id}>
+                <h3>{this.titleizeString(post.title)}</h3>
+                <p>{post.body}</p>
+            </li>
         })
+    }
+
+    titleizeString = (string) => {
+        const splitString = string.split(" ")
+        return splitString.map(word => {
+            return `${word[0].toUpperCase()}${word.slice(1)}`
+        }).join(" ")
+    }
+
+    constructAddressString = (addressObj) => {
+        const { street, suite, city, zipcode } = addressObj
+        return `${street}, ${suite}, ${city} ${zipcode}`
+    }
+
+    websiteClickHandler = (e) => {
+        e.preventDefault()
+        alert("The following click handler would take to an outside website")
     }
 
     render() {
@@ -21,11 +38,18 @@ export default class ProfilePage extends Component {
         return (
             <div>
                 <Link to="/">Go Home</Link>
-                <section>
-                    <h2>{data.username}</h2>
-                    <h3>{data.name}</h3>
+                <section className="contactInfo">
+                    <div>
+                        <h2>{data.username}</h2>
+                        <h3><span>{data.name}</span> - <a href={`mailto:${data.email}`}>{data.email.toLowerCase()}</a></h3>
+                        <p>{this.constructAddressString(data.address)}</p>
+                        <a href={`https://www.${data.website}`} onClick={(e) => this.websiteClickHandler(e)}>{data.website}</a> <a href={`tel:${data.phone}`}>{data.phone}</a>
+                    </div>
                 </section>
-                <ul>USER POSTS</ul>
+                <section className="userPosts">
+                    <h2>{`${data.username}'s`} Posts</h2>
+                    <ul>{this.renderPosts(posts)}</ul>
+                </section>
             </div>
         )
     }
