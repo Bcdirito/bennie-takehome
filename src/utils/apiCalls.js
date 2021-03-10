@@ -1,6 +1,6 @@
 const apiCalls = {
     getAll: async (objType) => {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/${objType}`)
+        const response = await fetch(`${process.env.REACT_APP_CALLOUT_URL}/${objType}`)
         const data = await response.json()
         return data
     },
@@ -13,7 +13,7 @@ const apiCalls = {
             }
         }
 
-        const response = await fetch('https://jsonplaceholder.typicode.com/users', metadata)
+        const response = await fetch(`${process.env.REACT_APP_CALLOUT_URL}/users`, metadata)
         const data = await response.json()
         return data
     }
