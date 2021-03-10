@@ -4,24 +4,25 @@ import {titleize} from "../utils/postFunctions"
 const UserCard = (props) => {
     const {user, posts} = props
 
-    const renderPostTitles = (posts) => {
+    const renderPostTitles = (username, posts) => {
         return posts.map(post => {
-            return <li>{titleize(post.title)}</li>
+            return <li key={`${username}-post${post.id}`}>{titleize(post.title)}</li>
         })
     }
+
     return (
         <div>
             <Link 
-                key={user.id} 
+                key={`link-${user.id}`} 
                 to={{
-                    pathname: `/users/${user.id}`,
+                    pathname: `${posts.length > 0 ? `/users/${user.id}` : '/'}`,
                     state: {
                         data: user,
                         posts: posts
                     }
                 }}
-            >{user.name}</Link>
-            <ul>{renderPostTitles(posts)}</ul>
+            >{user.username}</Link>
+            <ul>{renderPostTitles(user.username, posts)}</ul>
         </div>
     )
 }
