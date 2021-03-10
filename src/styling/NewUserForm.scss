@@ -1,6 +1,7 @@
 @import './variables.scss';
 
 #formContainer {
+    background-color: rgba(0, 0, 0, 0.85);
     position: fixed;
     top: 0;
     left: 0;
@@ -15,7 +16,13 @@
         width: 100%;
         position: absolute;
         background-color: $white;
-        padding: 0.5rem 1rem;
+        padding: 1rem;
+
+        #xIcon {
+            width: 3rem;
+            display: flex;
+            margin-left: 1rem;
+        }
         
         form {
             .inputContainer {
@@ -30,9 +37,11 @@
             }
 
             input[type=submit] {
-                background: $buttonBorder;
-                color: white;
+                background: $buttonBody;
+                border-color: $white;
+                color: $white;
                 width: 75%;
+                font-size: 1.25rem;
             }
         }
     }
@@ -40,20 +49,31 @@
 
 @media (min-width: 768px) {
     #formContainer {
-        background-color: rgba(0, 0, 0, 0.85);
-
         #newUserForm {
-            height: 60%;
             top: 20%;
-            
+            height: 60%;
+
             form {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                
+                .inputContainer {
+                    input, label {
+                        width: 50%;
+                    }
+                }
 
                 input[type=submit] {
-                    background: $buttonBorder;
-                    color: white;
+                    width: 50%;
+                    margin: auto;
                 }
+            }
+
+            form:not(:last-child) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            form:last-child {
+                grid-template-columns: 1fr;
             }
         }
     }
