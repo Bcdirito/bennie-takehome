@@ -4,7 +4,9 @@ import "../../styling/home/UserCard.scss"
 
 const UserCard = (props) => {
     const {user, posts} = props
+
     postFunctions.titleSort(posts)
+
     const renderPostTitles = (username, posts) => {
         return posts.map(post => {
             return <li key={`${username}-post${post.id}`} className="userCard-title">{postFunctions.titleize(post.title)}</li>
@@ -17,7 +19,7 @@ const UserCard = (props) => {
                 className="userCard-link"
                 key={`link-${user.id}`} 
                 to={{
-                    pathname: `${posts.length > 0 ? `/users/${user.id}` : '/'}`,
+                    pathname: `/users/${user.id}`,
                     state: {
                         data: user,
                         posts: posts

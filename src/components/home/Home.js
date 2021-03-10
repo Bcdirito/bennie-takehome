@@ -72,7 +72,7 @@ export default class Home extends Component {
         this.setState({
             ...this.state,
             selectedUser
-        }, () => console.log(this.state.selectedUser))
+        })
     }
 
     clickHandler = () => {
