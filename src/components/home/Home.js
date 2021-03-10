@@ -109,7 +109,17 @@ export default class Home extends Component {
             ...this.state,
             newUserData: newUser,
             showUserForm: !this.state.showUserForm
-        })
+        }) 
+    }
+
+    confirmNewUser = () => {
+        if (Object.keys(this.state.allUsers).length > 10) {
+            const answer = window.confirm("Creating a new user will overwrite the previous user created, as per the limitations of the API. Do you want to continue?")
+            if (answer === true) this.clickHandler()
+        } else {
+            this.clickHandler()
+        }
+    
     }
 
     updateNewUserData = (e) => {
@@ -188,7 +198,7 @@ export default class Home extends Component {
         return (
             <div id="homepage">
                 <ul id="userCardContainer">{this.generateUserCards(this.state.allUsers)}</ul>
-                <button className="newUserButton" onClick={(e) => this.clickHandler(e)}>Create New User</button>
+                <button className="newUserButton" onClick={() => this.confirmNewUser()}>Create New User</button>
                 {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} hideForm={(e) => this.hideNewUserForm(e)} /> : null}
             </div>
         )
