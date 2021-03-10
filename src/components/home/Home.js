@@ -12,9 +12,14 @@ export default class Home extends Component {
     }
 
     componentDidMount = async () => {
-        const userObj =  await this.getAllUsers()
-        const allPosts = await this.getAllPosts()
-        this.connectUsersAndPosts(userObj, allPosts)
+        if (window.sessionStorage.getItem("allUsers")) {
+            const allUsers = JSON.parse(window.sessionStorage.getItem("allUsers"))
+            this.restoreUsersAndPosts(allUsers)
+        } else {
+            const userObj =  await this.getAllUsers()
+            const allPosts = await this.getAllPosts()
+            this.connectUsersAndPosts(userObj, allPosts)
+        }
     }
 
     getAllUsers = async () => {
@@ -52,6 +57,21 @@ export default class Home extends Component {
         this.setState({
             ...this.state,
             allUsers: users
+        }, () => {window.sessionStorage.setItem('allUsers', JSON.stringify(this.state.allUsers)) })
+    }
+
+    restoreUsersAndPosts = (users) => {
+        const allPosts = []
+
+        for (const id in users) {
+            const {posts} = users[id]
+            allPosts.push(...posts)
+        }
+
+        this.setState({
+            ...this.state,
+            allUsers: users,
+            allPosts: allPosts
         })
     }
 
@@ -93,12 +113,26 @@ export default class Home extends Component {
     }
 
     updateNewUserData = (e) => {
-        this.setState({
-            ...this.state,
-            newUserData: {
-                [e.target.name]: e.target.value
-            }
-        })
+        if (e.target.dataset.obj === "standard") {
+            this.setState({
+                ...this.state,
+                newUserData: {
+                    ...this.state.newUserData,
+                    [e.target.name]: e.target.value
+                }
+            })
+        } else {
+            this.setState({
+                ...this.state,
+                newUserData: {
+                    ...this.state.newUserData,
+                    address: {
+                        ...this.state.newUserData.address,
+                        [e.target.name]: e.target.value
+                    }
+                }
+            })
+        }
     }
 
     createNewUser = async (e) => {
@@ -112,20 +146,38 @@ export default class Home extends Component {
                 'Content-type': 'application/json; charset=UTF-8'
             }
         }
+
         const response = await fetch('https://jsonplaceholder.typicode.com/users', headerData)
         const data = await response.json()
-        const {allUsers} = this.state
-        allUsers[data.id] = {
-            data,
-            posts: []
-        }
 
-        this.setState({
-            ...this.state,
-            allUsers: allUsers,
-            newUserData: {},
-            showUserForm: !this.state.showUserForm
-        })
+        if (data.username && data.id) {
+            const { allUsers } = this.state
+            allUsers[data.id] = {
+                data,
+                posts: []
+            }
+
+            this.setState({
+                ...this.state,
+                allUsers: allUsers,
+                newUserData: {},
+                showUserForm: !this.state.showUserForm
+            }, () => { window.sessionStorage.setItem('allUsers', JSON.stringify(this.state.allUsers)) })
+        } else {
+            alert("Uh Oh! Something went wrong! Please make sure all fields properly filled out.")
+            const emptyNewUser = {
+                name: "",
+                username: "",
+                email: "",
+                address: "",
+                website: "",
+                phone: ""
+            }
+            this.setState({
+                ...this.state,
+                newUserData: emptyNewUser
+            })
+        }
     }
 
     hideNewUserForm = (e) => {

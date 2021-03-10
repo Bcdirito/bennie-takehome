@@ -19,7 +19,8 @@
         background-color: $white;
         padding: 1rem;
         cursor: auto;
-
+        overflow-y: scroll;
+        
         form {
             .inputContainer {
                 margin-bottom: 1rem;

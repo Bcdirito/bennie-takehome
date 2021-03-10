@@ -10,27 +10,39 @@ const NewUserForm = (props) => {
                 <form onSubmit={(e) => props.submitHandler(e)}>
                     <div className="inputContainer">
                         <label>Full Name:</label>
-                        <input type="text" name="name" required="required" onChange={(e) => props.changeHandler(e)}/>            
+                        <input type="text" data-obj="standard" name="name" required="required" onChange={(e) => props.changeHandler(e)}/>            
                     </div>
                     <div className="inputContainer">
                         <label>Username:</label>
-                        <input type="text" name="username" required="required" onChange={(e) => props.changeHandler(e)}/>
+                        <input type="text" data-obj="standard" name="username" required="required" onChange={(e) => props.changeHandler(e)}/>
                     </div>
                     <div className="inputContainer">
                         <label>Email:</label>
-                        <input type="email" name="email" required="required"  onChange={(e) => props.changeHandler(e)}/>
+                        <input type="email" data-obj="standard" name="email" required="required" onChange={(e) => props.changeHandler(e)}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Address:</label>
-                        <input type="text" name="address" required="required" onChange={(e) => props.changeHandler(e)}/>
+                        <label>Street:</label>
+                        <input type="text" data-obj="address" name="street" required="required" onChange={(e) => props.changeHandler(e)}/>
+                    </div>
+                    <div className="inputContainer">
+                        <label>Suite:</label>
+                        <input type="text" data-obj="address" name="suite" onChange={(e) => props.changeHandler(e)}/>
+                    </div>
+                    <div className="inputContainer">
+                        <label>City:</label>
+                        <input type="text" data-obj="address" name="city" required="required" onChange={(e) => props.changeHandler(e)}/>
+                    </div>
+                    <div className="inputContainer">
+                        <label>Zip:</label>
+                        <input type="text" data-obj="address" name="zip" required="required" minLength="5" onChange={(e) => props.changeHandler(e)}/>
                     </div>
                     <div className="inputContainer">
                         <label>Website:</label>
-                        <input type="text" name="address" required="required"  onChange={(e) => props.changeHandler(e)}/>
+                        <input type="text" data-obj="standard" name="website" required="required" onChange={(e) => props.changeHandler(e)}/>
                     </div>
                     <div className="inputContainer">
                         <label>Phone:</label>
-                        <input type="text" name="address" required="required"  onChange={(e) => props.changeHandler(e)}/>
+                        <input type="text" data-obj="standard" name="phone" required="required" minLength="10" onChange={(e) => props.changeHandler(e)}/>
                     </div>
                     <input type="submit" value="Submit User" />
                 </form>
