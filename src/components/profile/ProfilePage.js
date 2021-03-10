@@ -23,7 +23,8 @@ const ProfilePage = (props) => {
             const constructAddressString = (addressObj) => {
                 try {
                     const { street, suite, city, zipcode } = addressObj
-                    return `${street}, ${suite}, ${city} ${zipcode}`
+                    if (suite.length > 0) return `${street}, ${suite}, ${city} ${zipcode}`
+                    else return `${street}, ${city} ${zipcode}`
                 } catch {
                     return "This user was created through the API and is a mock response."
                 }

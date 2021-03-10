@@ -34,7 +34,7 @@ const NewUserForm = (props) => {
                     </div>
                     <div className="inputContainer">
                         <label>Zip:</label>
-                        <input type="text" data-obj="address" name="zip" required="required" minLength="5" onChange={(e) => props.changeHandler(e)}/>
+                        <input type="text" data-obj="address" name="zipcode" required="required" minLength="5" onChange={(e) => props.changeHandler(e)}/>
                     </div>
                     <div className="inputContainer">
                         <label>Website:</label>
