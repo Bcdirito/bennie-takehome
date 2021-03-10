@@ -25,7 +25,8 @@ button, input[type=submit] {
   border-radius: 25px;
   border: 2px solid $white;
   color: $white;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 #backArrow {
@@ -33,4 +34,11 @@ button, input[type=submit] {
   display: flex;
   margin-left: 1rem;
   cursor: pointer;
+}
+
+#titleBar {
+  background: $buttonBody;
+  border-radius: 25px;
+  padding: 1rem;
+  color: $white;
 }

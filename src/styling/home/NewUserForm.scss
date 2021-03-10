@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import '../general/variables.scss';
 
 #formContainer {
     background-color: rgba(0, 0, 0, 0.85);
@@ -19,7 +19,8 @@
         background-color: $white;
         padding: 1rem;
         cursor: auto;
-
+        overflow-y: scroll;
+        
         form {
             .inputContainer {
                 margin-bottom: 1rem;

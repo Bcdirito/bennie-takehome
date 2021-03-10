@@ -1,4 +1,4 @@
-const postFunctions = {
+const postHelpers = {
     titleize: (string) => {
         const splitString = string.split(" ")
         return splitString.map(word => {
@@ -10,4 +10,4 @@ const postFunctions = {
     }
 }
 
-module.exports = postFunctions
+module.exports = postHelpers

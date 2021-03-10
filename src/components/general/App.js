@@ -1,6 +1,6 @@
-import './styling/App.scss';
-import Home from "./components/Home"
-import ProfilePage from "./components/ProfilePage"
+import '../../styling/general/App.scss';
+import Home from "../home/Home"
+import ProfilePage from "../profile/ProfilePage"
 
 import {
   BrowserRouter as Router,
@@ -13,6 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <h1 id="titleBar">Bennie Take Home</h1>
         <Switch>
           <Route path="/users/:id" render={(props) => (
             <ProfilePage {...props}/>
