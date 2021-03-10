@@ -4,6 +4,7 @@ import backArrow from "../assets/backArrow.svg"
 import "../styling/ProfilePage.scss"
 
 const ProfilePage = (props) => {
+    window.scrollTo(0, 0)
     const {data, posts} = props.location.state
     postFunctions.titleSort(posts)
 
@@ -28,8 +29,8 @@ const ProfilePage = (props) => {
 
     return (
         <div id="profilePage">
-            <Link to="/"><img src={backArrow} alt="Back To Homepage" id="backArrow" /></Link>
             <section className="contactInfo">
+                <Link to="/"><img src={backArrow} alt="Back To Homepage" id="backArrow" /></Link>
                 <h2>{data.username}</h2>
                 <div className="nameAddress">
                     <h3>{data.name}</h3>
@@ -40,7 +41,7 @@ const ProfilePage = (props) => {
             </section>
             <section className="userPosts">
                 <h2>{`${data.username}'s`} Posts</h2>
-                <ul>{renderPosts(posts)}</ul>
+                <ul className="postContainer">{renderPosts(posts)}</ul>
             </section>
         </div>
     )
