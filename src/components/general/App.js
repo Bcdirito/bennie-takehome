@@ -1,6 +1,6 @@
-import './styling/App.scss';
-import Home from "./components/Home"
-import ProfilePage from "./components/ProfilePage"
+import '../../styling/general/App.scss';
+import Home from "../home/Home"
+import ProfilePage from "../profile/ProfilePage"
 
 import {
   BrowserRouter as Router,

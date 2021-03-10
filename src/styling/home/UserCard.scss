@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import '../general/variables.scss';
 
 .userCard {
     background-color: $white;
@@ -9,7 +9,6 @@
 
     &-link {
         grid-template-columns: 1fr;
-        text-decoration: none;
         font-size: 1.5rem;
         margin-bottom: 1rem;
         color: blue;

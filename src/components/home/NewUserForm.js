@@ -1,5 +1,5 @@
-import '../styling/NewUserForm.scss'
-import backArrow from "../assets/backArrow.svg"
+import '../../styling/home/NewUserForm.scss'
+import backArrow from "../../assets/backArrow.svg"
 
 const NewUserForm = (props) => {
     return (

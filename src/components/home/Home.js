@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserCard from './UserCard'
 import NewUserForm from "./NewUserForm"
-import '../styling/Home.scss'
+import '../../styling/home/Home.scss'
 
 export default class Home extends Component {
     state = {

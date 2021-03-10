@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
-import postFunctions from "../utils/postFunctions"
-import backArrow from "../assets/backArrow.svg"
-import "../styling/ProfilePage.scss"
+import postFunctions from "../../utils/postFunctions"
+import backArrow from "../../assets/backArrow.svg"
+import "../../styling/profile/ProfilePage.scss"
 
 const ProfilePage = (props) => {
     window.scrollTo(0, 0)

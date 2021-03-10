@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
-import postFunctions from "../utils/postFunctions"
-import "../styling/UserCard.scss"
+import postFunctions from "../../utils/postFunctions"
+import "../../styling/home/UserCard.scss"
 
 const UserCard = (props) => {
     const {user, posts} = props
