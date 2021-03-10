@@ -75,8 +75,7 @@ export default class Home extends Component {
         }, () => console.log(this.state.selectedUser))
     }
 
-    clickHandler = (e) => {
-        console.log(e.target)
+    clickHandler = () => {
         const newUser = {
             name: "",
             username: "",
@@ -103,7 +102,9 @@ export default class Home extends Component {
     }
 
     createNewUser = async (e) => {
+        e.target.reportValidity()
         e.preventDefault()
+
         const headerData = {
             method: "POST",
             body: JSON.stringify(this.state.newUserData),
@@ -126,6 +127,10 @@ export default class Home extends Component {
             showUserForm: !this.state.showUserForm
         })
     }
+
+    hideNewUserForm = (e) => {
+        if (e.target.id === "formContainer" || e.target.id === "xIcon") this.clickHandler()
+    }
     
     render() {
         return (
@@ -133,7 +138,7 @@ export default class Home extends Component {
                 <h1>Bennie Take Home</h1>
                 <button className="newUserButton" onClick={(e) => this.clickHandler(e)}>Create New User</button>
                 <ul id="userCardContainer">{this.generateUserCards(this.state.allUsers)}</ul>
-                {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} clickHandler={(e) => this.clickHandler(e)} /> : null}
+                {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} hideForm={(e) => this.hideNewUserForm(e)} /> : null}
             </div>
         )
     }
