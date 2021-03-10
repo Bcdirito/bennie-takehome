@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Brian DiRito Bennie Takehome
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The following repository contains my code for the Bennie takehome code-challenge. It is built with React and uses the following libraries:
 
-## Available Scripts
+* React Router Dom
+* Sass
 
-In the project directory, you can run:
+The application supports mobile, tablet, and desktop design and was styled using mobile-first design practices.
 
-### `npm start`
+## Application Instillation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To install this application you will want to navigate to the `bennie-takehome` directory and then run `npm install`. Node Package Manager will handle the rest from there.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## ENV Variables
 
-### `npm test`
+To simulate a Production Environment, a `.env` file is used for the API callouts. To configure this file and variable:
+    1. Navigate to the root directory and create a file named `.env`
+    2. Inside of said file, add the following variable:
+          1. `REACT_APP_CALLOUT_URL="https://jsonplaceholder.typicode.com"`
+    3. If your server is currently running, please restart it for `.env` files to take effect
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Please make sure to implement this file and variable. If they are missing the application will only display the header and `Create New User` button and display the following error message in the Developer Console:
+    *`Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0`
 
-### `npm run build`
+If you see either of these, errors, please see the steps above to resolve.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running the Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run the application you can simply run `npm start`. The application will be hosted at `http://localhost:3000/`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you have any questions, please reach out, and I will be happy to answer tha,
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy!
