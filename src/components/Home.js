@@ -129,7 +129,7 @@ export default class Home extends Component {
     }
 
     hideNewUserForm = (e) => {
-        if (e.target.id === "formContainer" || e.target.id === "xIcon") this.clickHandler()
+        if (e.target.id === "formContainer" || e.target.id === "backArrow") this.clickHandler()
     }
     
     render() {

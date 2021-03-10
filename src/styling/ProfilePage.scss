@@ -1,0 +1,82 @@
+@import './variables.scss';
+
+#profilePage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    .contactInfo {
+        padding: 0.5rem;
+        padding-bottom: 1rem;
+        background-color: $white;
+        border-radius: 25px;
+
+        .nameAddress {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            a, span {
+                margin: 0.5rem 0rem;
+            }
+        }
+
+    }
+    .userPosts {
+        padding: 1rem;
+        background-color: $white;
+        border-radius: 25px;
+
+        .post {
+            padding: 1rem;
+
+            &-title {
+                font-style: italic;
+                text-align: center;
+            }
+    
+            &-body {
+                text-align: left;
+            }
+        }
+
+        .post:nth-child(n+2) {
+            border-top: 1px solid gray;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    #profilePage {
+        .userPosts {
+            .postContainer {
+                display: grid;
+                gap: 1rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #profilePage {
+        .userPosts {
+            .postContainer {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+ 
+                .post {
+                    &-title {
+                        min-height: 3rem;
+                    }
+                }
+            }
+
+            .post:nth-child(2) {
+                border-top: unset;
+            }
+            
+            .post:nth-child(n+3) {
+                border-top: 1px solid gray;
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@ const NewUserForm = (props) => {
     return (
         <div id="formContainer" onClick={(e) => props.hideForm(e)}>
             <div id="newUserForm">
-                <img src={backArrow} alt="Back To Homepage" id="xIcon" onClick={(e) => props.hideForm(e)} />
+                <img src={backArrow} alt="Back To Homepage" id="backArrow" onClick={(e) => props.hideForm(e)} />
                 <h1>Create New User:</h1>
                 <form onSubmit={(e) => props.submitHandler(e)}>
                     <div className="inputContainer">

@@ -1,50 +1,50 @@
-import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {titleize} from "../utils/postFunctions"
+import postFunctions from "../utils/postFunctions"
+import backArrow from "../assets/backArrow.svg"
+import "../styling/ProfilePage.scss"
 
-export default class ProfilePage extends Component {
-    state = {
-        data: this.props.location.state.data,
-        posts: this.props.location.state.posts
-    }
+const ProfilePage = (props) => {
+    window.scrollTo(0, 0)
+    const {data, posts} = props.location.state
+    postFunctions.titleSort(posts)
 
-    renderPosts = (posts) => {
+    const renderPosts = (posts) => {
         return posts.map((post) => {
-            return <li key={post.id}>
-                <h3>{titleize(post.title)}</h3>
-                <p>{post.body}</p>
+            return <li key={post.id} className="post">
+                <h3 className="post-title">{postFunctions.titleize(post.title)}</h3>
+                <p className="post-body">{post.body}</p>
             </li>
         })
     }
 
-    constructAddressString = (addressObj) => {
+    const constructAddressString = (addressObj) => {
         const { street, suite, city, zipcode } = addressObj
         return `${street}, ${suite}, ${city} ${zipcode}`
     }
 
-    websiteClickHandler = (e) => {
+    const websiteClickHandler = (e) => {
         e.preventDefault()
-        alert("The following click handler would take to an outside website")
+        alert("The following click handler would take to an outside website. Since this API uses mock data, this feature is currently disabled")
     }
 
-    render() {
-        const {data, posts} = this.state
-        return (
-            <div>
-                <Link to="/">Go Home</Link>
-                <section className="contactInfo">
-                    <div>
-                        <h2>{data.username}</h2>
-                        <h3><span>{data.name}</span> - <a href={`mailto:${data.email}`}>{data.email.toLowerCase()}</a></h3>
-                        <p>{this.constructAddressString(data.address)}</p>
-                        <a href={`https://www.${data.website}`} onClick={(e) => this.websiteClickHandler(e)}>{data.website}</a> <a href={`tel:${data.phone}`}>{data.phone}</a>
-                    </div>
-                </section>
-                <section className="userPosts">
-                    <h2>{`${data.username}'s`} Posts</h2>
-                    <ul>{this.renderPosts(posts)}</ul>
-                </section>
-            </div>
-        )
-    }
+    return (
+        <div id="profilePage">
+            <section className="contactInfo">
+                <Link to="/"><img src={backArrow} alt="Back To Homepage" id="backArrow" /></Link>
+                <h2>{data.username}</h2>
+                <div className="nameAddress">
+                    <h3>{data.name}</h3>
+                    <a href={`mailto:${data.email}`}>{data.email.toLowerCase()}</a>
+                    <span>{constructAddressString(data.address)}</span>
+                    <a href={`https://www.${data.website}`} onClick={(e) => websiteClickHandler(e)}>{data.website}</a> <a href={`tel:${data.phone}`}>{data.phone}</a>
+                </div>
+            </section>
+            <section className="userPosts">
+                <h2>{`${data.username}'s`} Posts</h2>
+                <ul className="postContainer">{renderPosts(posts)}</ul>
+            </section>
+        </div>
+    )
 }
+
+export default ProfilePage
