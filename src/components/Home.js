@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import UserCard from './UserCard'
 
 export default class Home extends Component {
     state = {
@@ -57,13 +57,7 @@ export default class Home extends Component {
         for (const user in users) {
             const {data, posts} = users[user]
             userNames.push(
-                <Link key={data.id} to={{
-                    pathname: `/users/${data.id}`,
-                    state: {
-                        data: data,
-                        posts: posts
-                    }
-                }}>{data.name}</Link>
+                <UserCard user={data} posts={posts}/>
             )
         }
 

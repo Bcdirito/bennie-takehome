@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {titleize} from "../utils/postFunctions"
 
 export default class ProfilePage extends Component {
     state = {
@@ -10,17 +11,10 @@ export default class ProfilePage extends Component {
     renderPosts = (posts) => {
         return posts.map((post) => {
             return <li key={post.id}>
-                <h3>{this.titleizeString(post.title)}</h3>
+                <h3>{titleize(post.title)}</h3>
                 <p>{post.body}</p>
             </li>
         })
-    }
-
-    titleizeString = (string) => {
-        const splitString = string.split(" ")
-        return splitString.map(word => {
-            return `${word[0].toUpperCase()}${word.slice(1)}`
-        }).join(" ")
     }
 
     constructAddressString = (addressObj) => {
