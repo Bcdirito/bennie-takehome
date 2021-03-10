@@ -1,5 +1,5 @@
 import {Link, Redirect} from 'react-router-dom'
-import postFunctions from "../../utils/postFunctions"
+import postHelpers from "../../utils/postHelpers"
 import backArrow from "../../assets/backArrow.svg"
 import "../../styling/profile/ProfilePage.scss"
 
@@ -9,12 +9,12 @@ const ProfilePage = (props) => {
         window.scrollTo(0, 0)
         try {
             const {data, posts} = props.location.state
-            postFunctions.titleSort(posts)
+            postHelpers.titleSort(posts)
     
             const renderPosts = (posts) => {
                 return posts.map((post) => {
                     return <li key={post.id} className="post">
-                        <h3 className="post-title">{postFunctions.titleize(post.title)}</h3>
+                        <h3 className="post-title">{postHelpers.titleize(post.title)}</h3>
                         <p className="post-body">{post.body}</p>
                     </li>
                 })
@@ -44,7 +44,7 @@ const ProfilePage = (props) => {
                             <h3>{data.name}</h3>
                             <a href={`mailto:${data.email}`}>{data.email}</a>
                             <span>{constructAddressString(data.address)}</span>
-                            <a href={`https://www.${data.website}`} onClick={(e) => websiteClickHandler(e)}>{data.website}</a> <a href={`tel:${data.phone}`}>{data.phone}</a>
+                            <a href={`https://www.${data.website}`} onClick={websiteClickHandler}>{data.website}</a> <a href={`tel:${data.phone}`}>{data.phone}</a>
                         </div>
                     </section>
                     <section className="userPosts">

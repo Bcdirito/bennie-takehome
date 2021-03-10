@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import UserCard from './UserCard'
 import NewUserForm from "./NewUserForm"
 import '../../styling/home/Home.scss'
+import objectHelpers from '../../utils/objectHelpers'
+import apiCalls from '../../utils/apiCalls'
 
 export default class Home extends Component {
     state = {
@@ -23,8 +25,7 @@ export default class Home extends Component {
     }
 
     getAllUsers = async () => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const users = await response.json()
+        const users = await apiCalls.getAll('users')
         const mainUserObj = {}
 
         for (const user of users) {
@@ -38,8 +39,8 @@ export default class Home extends Component {
     }
 
     getAllPosts = async () => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-        const posts = await response.json()
+        const posts = await apiCalls.getAll('posts')
+
         this.setState({
             ...this.state,
             allPosts: posts
@@ -96,14 +97,7 @@ export default class Home extends Component {
     }
 
     clickHandler = () => {
-        const newUser = {
-            name: "",
-            username: "",
-            email: "",
-            address: "",
-            website: "",
-            phone: ""
-        }
+        const newUser = objectHelpers.emptyNewUser()
 
         this.setState({
             ...this.state,
@@ -149,16 +143,7 @@ export default class Home extends Component {
         e.target.reportValidity()
         e.preventDefault()
 
-        const headerData = {
-            method: "POST",
-            body: JSON.stringify(this.state.newUserData),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            }
-        }
-
-        const response = await fetch('https://jsonplaceholder.typicode.com/users', headerData)
-        const data = await response.json()
+        const data = await apiCalls.newUserRequest(this.state.newUserData)
 
         if (data.username && data.id) {
             const { allUsers } = this.state
@@ -175,14 +160,8 @@ export default class Home extends Component {
             }, () => { window.sessionStorage.setItem('allUsers', JSON.stringify(this.state.allUsers)) })
         } else {
             alert("Uh Oh! Something went wrong! Please make sure all fields properly filled out.")
-            const emptyNewUser = {
-                name: "",
-                username: "",
-                email: "",
-                address: "",
-                website: "",
-                phone: ""
-            }
+            const emptyNewUser = objectHelpers.emptyNewUser()
+
             this.setState({
                 ...this.state,
                 newUserData: emptyNewUser

@@ -1,15 +1,15 @@
 import {Link} from 'react-router-dom'
-import postFunctions from "../../utils/postFunctions"
+import postHelpers from "../../utils/postHelpers"
 import "../../styling/home/UserCard.scss"
 
 const UserCard = (props) => {
     const {user, posts} = props
 
-    postFunctions.titleSort(posts)
+    postHelpers.titleSort(posts)
 
     const renderPostTitles = (username, posts) => {
         return posts.map(post => {
-            return <li key={`${username}-post${post.id}`} className="userCard-title">{postFunctions.titleize(post.title)}</li>
+            return <li key={`${username}-post${post.id}`} className="userCard-title">{postHelpers.titleize(post.title)}</li>
         })
     }
 
