@@ -135,9 +135,8 @@ export default class Home extends Component {
     render() {
         return (
             <div id="homepage">
-                <h1>Bennie Take Home</h1>
-                <button className="newUserButton" onClick={(e) => this.clickHandler(e)}>Create New User</button>
                 <ul id="userCardContainer">{this.generateUserCards(this.state.allUsers)}</ul>
+                <button className="newUserButton" onClick={(e) => this.clickHandler(e)}>Create New User</button>
                 {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} hideForm={(e) => this.hideNewUserForm(e)} /> : null}
             </div>
         )

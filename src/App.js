@@ -13,6 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <h1 id="titleBar">Bennie Take Home</h1>
         <Switch>
           <Route path="/users/:id" render={(props) => (
             <ProfilePage {...props}/>

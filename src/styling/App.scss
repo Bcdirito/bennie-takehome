@@ -34,3 +34,10 @@ button, input[type=submit] {
   margin-left: 1rem;
   cursor: pointer;
 }
+
+#titleBar {
+  background: $buttonBody;
+  border-radius: 25px;
+  padding: 1rem;
+  color: $white;
+}

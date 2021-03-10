@@ -40,7 +40,7 @@
         }
 
         .post:nth-child(n+2) {
-            border-top: 1px solid gray;
+            border-top: 1px solid $gray;
         }
     }
 }
@@ -75,7 +75,7 @@
             }
             
             .post:nth-child(n+3) {
-                border-top: 1px solid gray;
+                border-top: 1px solid $gray;
             }
         }
     }
