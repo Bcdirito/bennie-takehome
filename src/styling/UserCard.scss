@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.userCard {
+    background-color: $white;
+    padding: 1rem 1.5rem;
+    display: grid;
+    margin-bottom: 1rem;
+    border-radius: 25px;
+
+    &-link {
+        grid-template-columns: 1fr;
+        text-decoration: none;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: blue;
+    }
+
+    &-title {
+        font-style: italic;
+        margin-bottom: 0.5rem;
+    }
+}

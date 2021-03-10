@@ -54,7 +54,7 @@ export default class Home extends Component {
         })
     }
 
-    generateListItemsMap = (users) => {
+    generateUserCards = (users) => {
         const userNames = []
         for (const user in users) {
             const {data, posts} = users[user]
@@ -74,7 +74,8 @@ export default class Home extends Component {
         }, () => console.log(this.state.selectedUser))
     }
 
-    clickHandler = () => {
+    clickHandler = (e) => {
+        console.log(e.target)
         const newUser = {
             name: "",
             username: "",
@@ -123,17 +124,15 @@ export default class Home extends Component {
             newUserData: {},
             showUserForm: !this.state.showUserForm
         })
-
-        
     }
     
     render() {
         return (
             <div id="homepage">
-                <h1>Brian DiRito Bennie Take Home</h1>
-                <ul id="">{this.generateListItemsMap(this.state.allUsers)}</ul>
-                <button className="newUserButton" onClick={() => this.clickHandler()}>Create New User</button>
-                {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} /> : null}
+                <h1>Bennie Take Home</h1>
+                <button className="newUserButton" onClick={(e) => this.clickHandler(e)}>Create New User</button>
+                <ul id="">{this.generateUserCards(this.state.allUsers)}</ul>
+                {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} clickHandler={(e) => this.clickHandler(e)} /> : null}
             </div>
         )
     }

@@ -1,4 +1,4 @@
-import './App.css';
+import './styling/App.scss';
 import Home from "./components/Home"
 import ProfilePage from "./components/ProfilePage"
 

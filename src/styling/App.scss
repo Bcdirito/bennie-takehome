@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+.App {
+  text-align: center;
+  padding: 1rem;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  text-align: left;
+}
+
+button, input[type=submit] {
+  background: $white;
+  padding: 1rem;
+  cursor: pointer;
+  font-family: $secondaryFont;
+  border-radius: 25px;
+  border: 2px solid $buttonBorder
+}
