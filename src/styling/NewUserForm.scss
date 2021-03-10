@@ -1,7 +1,6 @@
 @import './variables.scss';
 
 #formContainer {
-    background-color: rgba(0, 0, 0, 0.85);
     position: fixed;
     top: 0;
     left: 0;
@@ -12,28 +11,50 @@
     padding: 1rem;
 
     #newUserForm {
-        height: 60%;
+        height: 100%;
+        width: 100%;
         position: absolute;
         background-color: $white;
         padding: 0.5rem 1rem;
-        top: 20%;
-        width: 100%;
         
-        .inputContainer {
-            grid-template-columns: 1fr;
-            margin-bottom: 1rem;
-            display: grid;
-            justify-items: center;
+        form {
+            .inputContainer {
+                margin-bottom: 1rem;
+                display: grid;
+                justify-items: center;
+    
+                input, label {
+                    display: block;
+                    width: 75%;
+                }
+            }
 
-            input, label {
-                display: block;
-                width: 60%;
+            input[type=submit] {
+                background: $buttonBorder;
+                color: white;
+                width: 75%;
             }
         }
     }
+}
 
-    input[type=submit] {
-        background: $buttonBorder;
-        color: white;
+@media (min-width: 768px) {
+    #formContainer {
+        background-color: rgba(0, 0, 0, 0.85);
+
+        #newUserForm {
+            height: 60%;
+            top: 20%;
+            
+            form {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                input[type=submit] {
+                    background: $buttonBorder;
+                    color: white;
+                }
+            }
+        }
     }
 }

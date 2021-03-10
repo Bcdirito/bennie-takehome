@@ -4,6 +4,9 @@ const postFunctions = {
         return splitString.map(word => {
             return `${word[0].toUpperCase()}${word.slice(1)}`
         }).join(" ")
+    },
+    titleSort: (posts) => {
+        return posts.sort((a, b) => a.title.localeCompare(b.title))
     }
 }
 

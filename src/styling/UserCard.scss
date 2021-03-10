@@ -16,7 +16,19 @@
     }
 
     &-title {
+        text-align: center;
         font-style: italic;
-        margin-bottom: 0.5rem;
+    }
+
+    &-title:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .userCard {
+        &-link {
+            font-size: 2rem;
+        }
     }
 }

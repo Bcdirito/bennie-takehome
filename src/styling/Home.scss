@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+@media (min-width: 1024px) {
+    #userCardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem; 
+    }
+}
+
+@media (min-width: 1440px) {
+    #userCardContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import UserCard from './UserCard'
 import NewUserForm from "./NewUserForm"
+import '../styling/Home.scss'
 
 export default class Home extends Component {
     state = {
@@ -131,7 +132,7 @@ export default class Home extends Component {
             <div id="homepage">
                 <h1>Bennie Take Home</h1>
                 <button className="newUserButton" onClick={(e) => this.clickHandler(e)}>Create New User</button>
-                <ul id="">{this.generateUserCards(this.state.allUsers)}</ul>
+                <ul id="userCardContainer">{this.generateUserCards(this.state.allUsers)}</ul>
                 {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} clickHandler={(e) => this.clickHandler(e)} /> : null}
             </div>
         )
