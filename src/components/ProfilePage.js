@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom'
 import postFunctions from "../utils/postFunctions"
+import backArrow from "../assets/backArrow.svg"
+import "../styling/ProfilePage.scss"
 
 const ProfilePage = (props) => {
     const {data, posts} = props.location.state
@@ -7,9 +9,9 @@ const ProfilePage = (props) => {
 
     const renderPosts = (posts) => {
         return posts.map((post) => {
-            return <li key={post.id}>
-                <h3>{postFunctions.titleize(post.title)}</h3>
-                <p>{post.body}</p>
+            return <li key={post.id} className="post">
+                <h3 className="post-title">{postFunctions.titleize(post.title)}</h3>
+                <p className="post-body">{post.body}</p>
             </li>
         })
     }
@@ -25,13 +27,14 @@ const ProfilePage = (props) => {
     }
 
     return (
-        <div>
-            <Link to="/">Go Home</Link>
+        <div id="profilePage">
+            <Link to="/"><img src={backArrow} alt="Back To Homepage" id="backArrow" /></Link>
             <section className="contactInfo">
-                <div>
-                    <h2>{data.username}</h2>
-                    <h3><span>{data.name}</span> - <a href={`mailto:${data.email}`}>{data.email.toLowerCase()}</a></h3>
-                    <p>{constructAddressString(data.address)}</p>
+                <h2>{data.username}</h2>
+                <div className="nameAddress">
+                    <h3>{data.name}</h3>
+                    <a href={`mailto:${data.email}`}>{data.email.toLowerCase()}</a>
+                    <span>{constructAddressString(data.address)}</span>
                     <a href={`https://www.${data.website}`} onClick={(e) => websiteClickHandler(e)}>{data.website}</a> <a href={`tel:${data.phone}`}>{data.phone}</a>
                 </div>
             </section>

@@ -1,0 +1,37 @@
+@import './variables.scss';
+
+#profilePage {
+    background-color: $white;
+    padding: 1rem 0.5rem;
+
+    .contactInfo {
+        padding: 0.5rem;
+        border-bottom: 1px solid gray;
+
+        .nameAddress {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            a, span {
+                margin: 0.5rem 0rem;
+            }
+        }
+
+    }
+    .userPosts {
+        padding: 1rem;
+
+        .post {
+            border-bottom: 1px solid gray;
+
+            &-title {
+                font-style: italic;
+                text-align: center;
+            }
+    
+            &-body {
+                text-align:left ;
+            }
+        }
+    }
+}
