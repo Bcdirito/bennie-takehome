@@ -18,10 +18,12 @@ li {
 }
 
 button, input[type=submit] {
-  background: $white;
+  background: $buttonBody;
   padding: 1rem;
   cursor: pointer;
   font-family: $secondaryFont;
   border-radius: 25px;
-  border: 2px solid $buttonBorder
+  border: 2px solid $white;
+  color: $white;
+  font-size: 1rem;
 }

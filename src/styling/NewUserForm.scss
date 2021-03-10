@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     padding: 1rem;
+    cursor: pointer;
 
     #newUserForm {
         height: 100%;
@@ -17,11 +18,13 @@
         position: absolute;
         background-color: $white;
         padding: 1rem;
+        cursor: auto;
 
         #xIcon {
             width: 3rem;
             display: flex;
             margin-left: 1rem;
+            cursor: pointer;
         }
         
         form {
@@ -77,4 +80,20 @@
             }
         }
     }
+}
+
+@media (min-width: 1024px) {
+    #formContainer {
+
+        #newUserForm {
+            height: 80%;
+            width: 80%;
+            top: 10%;
+            left: 10%;
+        }
+    }
+}
+
+@media (min-width: 1440) {
+
 }
