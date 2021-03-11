@@ -13,21 +13,14 @@ The application supports mobile, tablet, and desktop design and was styled using
 
 ### ENV Variables
 
-* To simulate a Production Environment, a `.env` file is used for the API callouts. To configure this file and variable:
-    * Navigate to the root directory and create a file named `.env`
-    * Inside of said file, add the following variable:
-          * `REACT_APP_CALLOUT_URL="https://jsonplaceholder.typicode.com"`
-    * If your server is currently running, please restart it for `.env` files to take effect
-
-Please make sure to implement this file and variable. If they are missing the application will only display the header and `Create New User` button and display the following error message in the Developer Console:
-  * `Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0`
-
-If you see either of these, errors, please see the steps above to resolve.
+* Navigate to the root directory and create a file named `.env`
+* Inside of said file, add `REACT_APP_CALLOUT_URL="https://jsonplaceholder.typicode.com"`
+* If your server is currently running, please restart it for `.env` files to take effect
 
 ### Running the Application
 
 To run the application you can simply run `npm start`. The application will be hosted at `http://localhost:3000/`.
 
-If you have any questions, please reach out, and I will be happy to answer tha,
+If you have any questions, please reach out, and I will be happy to answer them/
 
 Enjoy!
