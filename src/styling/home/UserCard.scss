@@ -32,3 +32,14 @@
         }
     }
 }
+
+@media (min-width: 1024px) {
+    .userCard {
+        gap: 3rem;
+        margin-bottom: unset;
+
+        &-title:not(:last-child) {
+            margin-bottom: unset;
+        }
+    }
+}
