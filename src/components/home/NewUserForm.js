@@ -10,39 +10,39 @@ const NewUserForm = (props) => {
                 <h1>Create New User:</h1>
                 <form onSubmit={submitHandler}>
                     <div className="inputContainer">
-                        <label>Full Name:</label>
+                        <label className="requiredField">Full Name:</label>
                         <input type="text" data-obj="standard" name="name" required="required" onChange={changeHandler}/>            
                     </div>
                     <div className="inputContainer">
-                        <label>Username:</label>
+                        <label className="requiredField">Username:</label>
                         <input type="text" data-obj="standard" name="username" required="required" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Email:</label>
+                        <label className="requiredField">Email:</label>
                         <input type="email" data-obj="standard" name="email" required="required" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Street:</label>
+                        <label className="requiredField">Street:</label>
                         <input type="text" data-obj="address" name="street" required="required" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Suite:</label>
+                        <label className="requiredField">Suite:</label>
                         <input type="text" data-obj="address" name="suite" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>City:</label>
+                        <label className="requiredField">City:</label>
                         <input type="text" data-obj="address" name="city" required="required" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Zip:</label>
+                        <label className="requiredField">Zip:</label>
                         <input type="text" data-obj="address" name="zipcode" required="required" minLength="5" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Website:</label>
+                        <label className="requiredField">Website:</label>
                         <input type="text" data-obj="standard" name="website" required="required" onChange={changeHandler}/>
                     </div>
                     <div className="inputContainer">
-                        <label>Phone:</label>
+                        <label className="requiredField">Phone:</label>
                         <input type="text" data-obj="standard" name="phone" required="required" minLength="10" onChange={changeHandler}/>
                     </div>
                     <input type="submit" value="Submit User" />

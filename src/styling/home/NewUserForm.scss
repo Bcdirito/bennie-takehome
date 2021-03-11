@@ -33,6 +33,12 @@
                 }
             }
 
+            .requiredField:after {
+                content: '*';
+                color: red;
+                margin-left:2px
+            }
+
             input[type=submit] {
                 background: $buttonBody;
                 border-color: $white;
