@@ -1,50 +1,38 @@
 import '../../styling/home/NewUserForm.scss'
 import backArrow from "../../assets/backArrow.svg"
+import FormField from "./FormField"
 
 const NewUserForm = (props) => {
     const {hideForm, submitHandler, changeHandler} = props
+    const renderFormFields = () => {
+        const standardFormNames = ["name", "username", "email", "website", "phone"]
+        const addressFormNames = ["street", "suite", "city", "zipcode"]
+        const allFields = [...generateFormFields(standardFormNames, 'standard'), ...generateFormFields(addressFormNames, 'address')]
+
+        return allFields
+    }
+
+    const generateFormFields = (arr, objName) => {
+        return arr.map(name => {
+            const data = {
+                name: name,
+                dataObj: objName,
+                label: `${name[0].toUpperCase()}${name.slice(1)}:`,
+                labelClass: name !== 'suite' ? 'requiredField' : '',
+                required: name !== 'suite' ? 'required' : ''
+            }
+
+            return (<FormField key={name} data={data} changeEvent={changeHandler} />)
+        })
+    }
+
     return (
         <div id="formContainer" onClick={hideForm}>
             <div id="newUserForm">
                 <img src={backArrow} alt="Back To Homepage" id="backArrow" onClick={hideForm} />
                 <h1>Create New User:</h1>
                 <form onSubmit={submitHandler}>
-                    <div className="inputContainer">
-                        <label className="requiredField">Full Name:</label>
-                        <input type="text" data-obj="standard" name="name" required="required" onChange={changeHandler}/>            
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Username:</label>
-                        <input type="text" data-obj="standard" name="username" required="required" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Email:</label>
-                        <input type="email" data-obj="standard" name="email" required="required" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Street:</label>
-                        <input type="text" data-obj="address" name="street" required="required" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Suite:</label>
-                        <input type="text" data-obj="address" name="suite" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">City:</label>
-                        <input type="text" data-obj="address" name="city" required="required" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Zip:</label>
-                        <input type="text" data-obj="address" name="zipcode" required="required" minLength="5" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Website:</label>
-                        <input type="text" data-obj="standard" name="website" required="required" onChange={changeHandler}/>
-                    </div>
-                    <div className="inputContainer">
-                        <label className="requiredField">Phone:</label>
-                        <input type="text" data-obj="standard" name="phone" required="required" minLength="10" onChange={changeHandler}/>
-                    </div>
+                    {renderFormFields()}
                     <input type="submit" value="Submit User" />
                 </form>
             </div>
