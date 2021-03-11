@@ -25,7 +25,7 @@ const UserCard = (props) => {
                         posts: posts
                     }
                 }}
-            >{user.username}</Link>
+            >{user.name}</Link>
             <ul>{renderPostTitles(user.username, posts)}</ul>
         </div>
     )
