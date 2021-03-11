@@ -5,6 +5,9 @@ const apiCalls = {
         return data
     },
     newUserRequest: async (newUser) => {
+        newUser.name = newUser.name.split(" ").map(string => {
+            return structureNameString(string)
+        }).join(" ")
         const metadata = {
             method: "POST",
             body: JSON.stringify(newUser),
@@ -17,6 +20,10 @@ const apiCalls = {
         const data = await response.json()
         return data
     }
+}
+
+const structureNameString = (string) => {
+    return `${string[0].toUpperCase()}${string.slice(1)}`
 }
 
 module.exports =  apiCalls

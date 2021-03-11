@@ -11,7 +11,8 @@
         grid-template-columns: 1fr;
         font-size: 1.5rem;
         margin-bottom: 1rem;
-        color: blue;
+        color: $linkText;
+        text-decoration: none;
     }
 
     &-title {
@@ -28,6 +29,17 @@
     .userCard {
         &-link {
             font-size: 2rem;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .userCard {
+        gap: 3rem;
+        margin-bottom: unset;
+
+        &-title:not(:last-child) {
+            margin-bottom: unset;
         }
     }
 }

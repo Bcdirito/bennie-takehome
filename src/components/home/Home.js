@@ -177,8 +177,8 @@ export default class Home extends Component {
         return (
             <div id="homepage">
                 <ul id="userCardContainer">{this.generateUserCards(this.state.allUsers)}</ul>
-                <button className="newUserButton" onClick={() => this.confirmNewUser()}>Create New User</button>
-                {this.state.showUserForm? <NewUserForm changeHandler={(e) => this.updateNewUserData(e)} submitHandler={(e) => this.createNewUser(e)} hideForm={(e) => this.hideNewUserForm(e)} /> : null}
+                <button className="newUserButton" onClick={this.confirmNewUser}>Create New User</button>
+                {this.state.showUserForm? <NewUserForm changeHandler={this.updateNewUserData} submitHandler={this.createNewUser} hideForm={this.hideNewUserForm} /> : null}
             </div>
         )
     }
