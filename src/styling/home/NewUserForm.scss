@@ -30,7 +30,14 @@
                 input, label {
                     display: block;
                     width: 75%;
+                    height: 1.75rem;
                 }
+            }
+
+            .requiredField:after {
+                content: '*';
+                color: red;
+                margin-left:2px
             }
 
             input[type=submit] {
