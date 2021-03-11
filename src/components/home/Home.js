@@ -143,30 +143,38 @@ export default class Home extends Component {
         e.target.reportValidity()
         e.preventDefault()
 
-        const data = await apiCalls.newUserRequest(this.state.newUserData)
+        try {
+            const data = await apiCalls.newUserRequest(this.state.newUserData)
 
-        if (data.username && data.id) {
-            const { allUsers } = this.state
-            allUsers[data.id] = {
-                data,
-                posts: []
+            if (data.username && data.id) {
+                const { allUsers } = this.state
+                allUsers[data.id] = {
+                    data,
+                    posts: []
+                }
+
+                this.setState({
+                    ...this.state,
+                    allUsers: allUsers,
+                    newUserData: {},
+                    showUserForm: !this.state.showUserForm
+                }, () => { window.sessionStorage.setItem('allUsers', JSON.stringify(this.state.allUsers)) })
+            } else {
+                this.resetFormOnError()
             }
-
-            this.setState({
-                ...this.state,
-                allUsers: allUsers,
-                newUserData: {},
-                showUserForm: !this.state.showUserForm
-            }, () => { window.sessionStorage.setItem('allUsers', JSON.stringify(this.state.allUsers)) })
-        } else {
-            alert("Uh Oh! Something went wrong! Please make sure all fields properly filled out.")
-            const emptyNewUser = objectHelpers.emptyNewUser()
-
-            this.setState({
-                ...this.state,
-                newUserData: emptyNewUser
-            })
+        } catch {
+            this.resetFormOnError()
         }
+    }
+
+    resetFormOnError = () => {
+        alert("Uh Oh! Something went wrong! Please make sure all fields properly filled out.")
+        const emptyNewUser = objectHelpers.emptyNewUser()
+
+        this.setState({
+            ...this.state,
+            newUserData: emptyNewUser
+        })
     }
 
     hideNewUserForm = (e) => {
