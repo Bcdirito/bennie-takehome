@@ -9,7 +9,8 @@ The application supports mobile, tablet, and desktop design and was styled using
 
 ### Application Instillation
 
-* To install this application you will want to navigate to the `bennie-takehome` directory and then run `npm install`. Node Package Manager will handle the rest from there.
+* Navigate to the `bennie-takehome` directory
+* Run `npm install`.
 
 ### ENV Variables
 
@@ -21,6 +22,6 @@ The application supports mobile, tablet, and desktop design and was styled using
 
 To run the application you can simply run `npm start`. The application will be hosted at `http://localhost:3000/`.
 
-If you have any questions, please reach out, and I will be happy to answer them/
+If you have any questions, please reach out, and I will be happy to answer them!
 
 Enjoy!
